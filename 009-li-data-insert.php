@@ -7,6 +7,10 @@
     $categoriesMain = $pdo->query("SELECT * FROM categories WHERE `parents_id` = 0")->fetchAll();
 
     $categoriesChild = $pdo->query("SELECT * FROM categories WHERE `parents_id` = 1")->fetchAll();
+
+    // $sqlImg = "SELECT * FROM `images` WHERE `products_sid` = $sid";
+    // $images = $pdo->query($sqlImg)->fetch();
+    
 ?>
 <?php include __DIR__. '/partials/html-head.php'; ?>
 <?php include __DIR__. '/partials/navbar.php'; ?>
@@ -35,7 +39,8 @@
                     </div>
                     <div class="form-group">
                         <label for="images">商品圖片*</label>
-                            <input type="file" class="form-control" id="images" name="images" accept="image/*" multiple>
+                            <input type="file" class="form-control" id="images" name="images" accept="image/*">
+                                <!-- <img src="imgs/<?= $images['fileName'] ?>" alt="" width="300px"> -->
                             <small class="form-text"></small>
                     </div>
                     <div class="form-group">
@@ -121,33 +126,6 @@
             </div>
         </div>
     </div>
-    <!-- <div class="row mt-3">
-        <div class="col-8">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title mt-3">商品規格</h5>
-                    <form name="form1">
-                    <label for="name">鞋子尺碼</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                        <label class="form-check-label" for="defaultCheck1">
-                            22.5
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-                        <label class="form-check-label" for="defaultCheck2">
-                            25.5
-                        </label>
-                    </div>
-                    </form>
-
-               
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- <button type="submit" class="btn btn-primary mt-5">修改</button> -->
 
 <?php include __DIR__. '/partials/scripts.php'; ?>
 <script>

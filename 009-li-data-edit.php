@@ -4,23 +4,20 @@
 
 $sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;
 
-// "SELECT * FROM `products` JOIN `stock` ON `stock`.`products_sid` = `sid` WHERE `sid`=$sid;
-// SELECT * FROM `products` JOIN `images` ON `images`.`products_sid` = `sid` WHERE `sid`=$sid;"
-
-
 $sql = "SELECT * FROM `products` WHERE sid=$sid ";
 
 $r = $pdo->query($sql)->fetch();
 
 $rStock = $pdo->query("SELECT * FROM `stock` WHERE `products_id`= $sid")->fetch();
 
-$brands = $pdo->query("SELECT * FROM brands")->fetchAll();
+$brands = $pdo->query("SELECT * FROM `brands`")->fetchAll();
 
-$categoriesMain = $pdo->query("SELECT * FROM categories WHERE `parents_id` = 0")->fetchAll();
+$categoriesMain = $pdo->query("SELECT * FROM `categories` WHERE `parents_id` = 0")->fetchAll();
 
-$categoriesChild = $pdo->query("SELECT * FROM categories WHERE `parents_id` = 1")->fetchAll();
+$categoriesChild = $pdo->query("SELECT * FROM `categories` WHERE `parents_id` = 1")->fetchAll();
 
-
+$sqlImg = "SELECT * FROM `images` WHERE `products_sid` = $sid";
+$images = $pdo->query($sqlImg)->fetch();
 
 
 ?>
@@ -54,7 +51,8 @@ $categoriesChild = $pdo->query("SELECT * FROM categories WHERE `parents_id` = 1"
                     </div>
                     <div class="form-group">
                         <label for="images">商品圖片*</label>
-                            <input type="file" class="form-control" id="images" name="images" accept="image/*" multiple>
+                            <input type="file" class="form-control" id="images" name="images" accept="image/*">
+                                <img src="imgs/<?= $images['fileName'] ?>" alt="" width="300px">
                             <small class="form-text"></small>
                     </div>
 

@@ -64,13 +64,9 @@ if ($totalRows != 0) {
   $rows = $pdo->query($sql)->fetchAll();
 }
 
-/*
-$rowsStock=[];
-$rowsStock = $pdo->query("SELECT * FROM `stock`, `products` WHERE `products`.`sid` = `products_id`")->fetch();
-*/
 
-// $sqlImg = "SELECT * FROM `images` WHERE ";
-// $rowsImg = $pdo->query($sqlImg)->fetch();
+$sqlImg = "SELECT * FROM `images`";
+$rowsImg = $pdo->query($sqlImg)->fetchAll();
 
 ?>
 
@@ -88,13 +84,13 @@ $rowsStock = $pdo->query("SELECT * FROM `stock`, `products` WHERE `products`.`si
       </nav>
 
 <div class="container mt-3">
-    <div class="row" style="margin: 1rem 0">
-        <div class="col">
-            <form action="009-li.php" class="form-inline my-2 my-lg-0 d-flex justify-content-end">
-                <input class="form-control mr-sm-2" type="search" name="keyword" placeholder="Search" aria-label="Search" value="<?=htmlentities($keyword)?> ">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
+  <div class="row" style="margin: 1rem 0">
+      <div class="col">
+          <form action="009-li.php" class="form-inline my-2 my-lg-0 d-flex justify-content-end">
+              <input class="form-control mr-sm-2" type="search" name="keyword" placeholder="Search" aria-label="Search" value="<?=htmlentities($keyword)?> ">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+      </div>
   </div>
   <div class="row">
         <div class="col">
@@ -168,7 +164,13 @@ $rowsStock = $pdo->query("SELECT * FROM `stock`, `products` WHERE `products`.`si
                 </button>
               </td>
               <td><?= $r['sid'] ?></td>
-              <td><img src="./imgs/<?= $r['number']?> (1).jpg" class="w-100" style="max-width: 100px;" alt=""></td>
+              <td>
+              <?php foreach($rowsImg as $ri): ?> 
+                <?php if ( $r['sid'] == $ri['products_sid']): ?>
+                <img src="./imgs/<?= htmlentities($ri['fileName'])?>" class="w-100" style="max-width: 100px;" alt="">
+                <?php endif; ?>
+                <?php endforeach; ?>
+             </td>
               <td><?= htmlentities($r['name']) ?></td>
               <td><?= htmlentities($r['number']) ?></td>
               <td><?= $r['price'] ?></td>
