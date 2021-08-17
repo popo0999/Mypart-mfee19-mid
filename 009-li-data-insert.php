@@ -39,8 +39,8 @@
                     </div>
                     <div class="form-group">
                         <label for="images">商品圖片*</label>
-                            <input type="file" class="form-control" id="images" name="images" accept="image/*">
-                                <!-- <img src="imgs/<?= $images['fileName'] ?>" alt="" width="300px"> -->
+                            <input type="file" class="form-control" id="images" name="images" accept="image/*" onchange="loadFile(event)">
+                            <img id="output" class="w-50 mt-3"/>
                             <small class="form-text"></small>
                     </div>
                     <div class="form-group">
@@ -130,10 +130,17 @@
 <?php include __DIR__. '/partials/scripts.php'; ?>
 <script>
     
-    const name = document.querySelector('#name');
-    const size = document.querySelector('#size');
-    const number = document.querySelector('#number');
+const name = document.querySelector('#name');
+const size = document.querySelector('#size');
+const number = document.querySelector('#number');
 
+var loadFile = function(event) {
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output.src) // free memory
+    }
+  };
 
     function checkForm(){
 
@@ -177,6 +184,9 @@
             });
         }
     }
+
+
+
 </script>
 
 
