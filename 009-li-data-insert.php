@@ -6,7 +6,20 @@
 
     $categoriesMain = $pdo->query("SELECT * FROM categories WHERE `parents_id` = 0")->fetchAll();
 
-    $categoriesChild = $pdo->query("SELECT * FROM categories WHERE `parents_id` = 1")->fetchAll();
+    // $sqlCC = sprintf("SELECT * FROM categories WHERE `parents_id` = %s " , $cm['id']) ;
+    // $categoriesChild = $pdo->query($sqlCC)->fetchAll();
+
+
+    // $categoriesChild = $pdo->query("SELECT * FROM categories")->fetchAll();
+
+    $categoriesChild1 = $pdo->query("SELECT * FROM categories WHERE `parents_id` = 1")->fetchAll();
+
+    $categoriesChild2 = $pdo->query("SELECT * FROM categories WHERE `parents_id` = 2")->fetchAll();
+
+    $categoriesChild3 = $pdo->query("SELECT * FROM categories WHERE `parents_id` = 3")->fetchAll();
+
+
+
 
     // $sqlImg = "SELECT * FROM `images` WHERE `products_sid` = $sid";
     // $images = $pdo->query($sqlImg)->fetch();
@@ -55,18 +68,32 @@
                         <?php foreach($categoriesMain as $cm) : ?>
                         <option value="<?= $cm['id'] ?>"><?= $cm['name'] ?></option>
                         <?php endforeach; ?>
-                        <!-- <option value="1">男鞋</option>
-                        <option value="2">女鞋</option>
-                        <option value="3">其他商品</option> -->
                         </select>
                     </div>
+
+                    <!-- 如何在這邊獲得上面的$cm['id']的值 -->
                     <div class="form-group">
                         <label for="categoriesChild">商品子分類</label>
                         <select class="form-control" id="categoriesChild" name="categoriesChild">
                         <option disabled selected>請選擇</option>
-                        <?php foreach($categoriesChild as $cc) : ?>
+                        <?php if($cmid==1): ?>
+                        <?php foreach($categoriesChild1 as $cc) : ?>
                         <option value="<?= $cc['id'] ?>"><?= $cc['name'] ?></option>
                         <?php endforeach; ?>
+                        <?php endif; ?>
+
+                        <?php if($cmid==2): ?>
+                        <?php foreach($categoriesChild2 as $cc) : ?>
+                        <option value="<?= $cc['id'] ?>"><?= $cc['name'] ?></option>
+                        <?php endforeach; ?>
+                        <?php endif; ?>
+
+                        <?php if($cmid==3): ?>
+                        <?php foreach($categoriesChild3 as $cc) : ?>
+                        <option value="<?= $cc['id'] ?>"><?= $cc['name'] ?></option>
+                        <?php endforeach; ?>
+                        <?php endif; ?>
+
                         </select>
                     </div>
                     <div class="form-group">
@@ -134,13 +161,35 @@ const name = document.querySelector('#name');
 const size = document.querySelector('#size');
 const number = document.querySelector('#number');
 
+// ---------------照片預覽-----------------
 var loadFile = function(event) {
     var output = document.getElementById('output');
     output.src = URL.createObjectURL(event.target.files[0]);
     output.onload = function() {
       URL.revokeObjectURL(output.src) // free memory
     }
-  };
+};
+// ---------------照片預覽-----------------
+
+
+//---------------分類選單溜--------------------
+
+
+//   $(document).on('change', '#categoriesMain', function(){
+//    var categories = $('#categoriesMain :selected').val();
+//    //注意:selected前面有個空格！
+//    $.ajax({
+//       url:"009-li-deal.php",				
+//       method:"POST",
+//       data:{
+//          categories:categories
+//       },					
+//       success:function(res){					
+//          //處理回吐的資料
+//          $('#categoriesChild').html(res);
+//       }
+//    })//end ajax
+// });
 
     function checkForm(){
 
@@ -184,9 +233,6 @@ var loadFile = function(event) {
             });
         }
     }
-
-
-
 </script>
 
 

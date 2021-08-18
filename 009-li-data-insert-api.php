@@ -14,6 +14,8 @@ $output = [
 //  練習: 避免直接拜訪表單時的錯誤訊息
 //  資料格式檢查
 
+
+
 $sql = "INSERT INTO `products`
 (`name`, `number`, `detail`,`categories_id`, `categories_parents_id`, `brands_id`,`origin`, `price`, `sale`,`launched`,`created_time`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
 

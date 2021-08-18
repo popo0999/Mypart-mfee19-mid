@@ -12,11 +12,11 @@ $output = [
 ];
 
 //  練習: 避免直接拜訪表單時的錯誤訊息
-if(empty($_POST['number']))
-{
-    echo json_encode($output);
-    exit;
-}
+// if(empty($_POST['number']))
+// {
+//     echo json_encode($output);
+//     exit;
+// }
 
 
 $output['error'] = '資料1';
