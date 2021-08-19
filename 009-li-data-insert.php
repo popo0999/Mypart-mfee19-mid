@@ -186,7 +186,7 @@ $(function() {
                     lv: $('#categoriesMain option:selected').val()
                 },
                 datatype: "json",
-                success: function(resuslt) {
+                success: function(result) {
                     //當第一層回到預設值時，第二層回到預設位置
                     if (result == "") {
                         $('#categoriesChild').val($('option:first').val());
