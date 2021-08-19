@@ -34,12 +34,12 @@ if (!empty($keyword)) {
 }
 
 if (!empty($cate)) {
-    $where .= " AND `categories_parents_id`= $cate";
+    $where .= " AND `categories_id`= $cate";
     $pageBtnQS['cate'] = $cate;
 }
 
 if (!empty($cateP)) {
-  $where .= " AND `categories_id`= $cateP";
+  $where .= " AND `categories_parents_id`= $cateP";
   $pageBtnQS['cate'] = $cateP;
 }
 
@@ -105,7 +105,7 @@ $rowsImg = $pdo->query($sqlImg)->fetchAll();
 //   }
 // }
 
-// ---------------------------先做再說--------------------------
+// -----------------------------------------------------
 $sqlCate = "SELECT * FROM `categories`";
 $rowsCate = $pdo->query($sqlCate)->fetchAll();
 
@@ -113,7 +113,8 @@ $dict = [];
 foreach( $rowsCate as &$rCate){
     $dict[$rCate['id']] = $rCate;
   }
-
+// echo json_encode($dict,JSON_UNESCAPED_UNICODE);
+// echo '------------------';
 $tree = [];
 foreach($dict as $sid => $item){
     if($item['parents_id']==0){
@@ -123,6 +124,8 @@ foreach($dict as $sid => $item){
         $dict[$item['parents_id']]['nodes'][] = &$dict[$sid];
     }
 }
+
+// echo json_encode($tree,JSON_UNESCAPED_UNICODE);
 
 
 ?>
@@ -144,9 +147,9 @@ foreach($dict as $sid => $item){
                         <?= $c1['name'] ?>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="?cate=<?= $c2['id'] ?>">所有產品</a>
+                        <a class="dropdown-item" href="?cate=<?= $c1['id'] ?>">所有產品</a>
                         <?php foreach($c1['nodes'] as $c2):  ?>
-                        <a class="dropdown-item" href="?cate=<?= $c2['id'] ?>"><?= $c2['name'] ?></a>
+                        <a class="dropdown-item" href="?cateP=<?= $c2['id'] ?>"><?= $c2['name'] ?></a>
                         <?php endforeach;  ?>
                     </div>
                 </li>
@@ -238,11 +241,22 @@ foreach($dict as $sid => $item){
                 </button>
               </td>
               <td><?= $r['sid'] ?></td>
+              <?php $tmp = '' ?>
               <td>
-              <?php foreach($rowsImg as $ri): ?> 
+              <?php foreach($rowsImg as $ri): ?>
+                <?php if($tmp = ''): ?>
                 <?php if ( $r['sid'] == $ri['products_sid']): ?>
                 <img src="./imgs/<?= htmlentities($ri['fileName'])?>" class="w-100" style="max-width: 100px;" alt="">
                 <?php endif; ?>
+                <?php $tmp = $ri['products_sid']  ?>
+                <?php  // echo json_encode($tmp); ?>
+                <?php else : ?>
+                  <?php if($tmp = $ri['products_sid']) : ?>
+                  <?php continue;?>
+                  <?php else: ?>
+                    <img src="./imgs/<?= htmlentities($ri['fileName'])?>" class="w-100" style="max-width: 100px;" alt="">
+                  <?php endif; ?>
+                  <?php endif; ?>
                 <?php endforeach; ?>
              </td>
               <td><?= htmlentities($r['name']) ?></td>
