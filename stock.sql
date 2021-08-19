@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2021-08-18 14:45:40
+-- 產生時間： 2021-08-19 15:48:30
 -- 伺服器版本： 10.4.20-MariaDB
 -- PHP 版本： 7.4.21
 
@@ -81,12 +81,11 @@ INSERT INTO `stock` (`id`, `products_id`, `size`, `stock`) VALUES
 (40, 6, '24.5', 50),
 (41, 6, '25', 50),
 (42, 6, '25.5', 50),
-(43, 33, '29', 30),
-(44, 34, '28', 60),
-(45, 35, '30', 30),
 (47, 37, '28', 60),
 (48, 38, '28', 69),
-(51, 41, '29', 30);
+(53, 43, '27', 50),
+(58, 48, '30', 55),
+(60, 50, '28', 60);
 
 --
 -- 已傾印資料表的索引
@@ -107,7 +106,7 @@ ALTER TABLE `stock`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `stock`
 --
 ALTER TABLE `stock`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- 已傾印資料表的限制式

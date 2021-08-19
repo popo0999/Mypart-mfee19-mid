@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2021-08-18 14:45:13
+-- 產生時間： 2021-08-19 15:48:17
 -- 伺服器版本： 10.4.20-MariaDB
 -- PHP 版本： 7.4.21
 
@@ -53,14 +53,11 @@ INSERT INTO `products` (`sid`, `categories_id`, `categories_parents_id`, `brands
 (4, 2, 10, 3, 'New Balance Fresh Foam X Vongo v5\r\n', 'nb01orange\r\n', 4780, 4780, '我們的 Fresh Foam X Vongo v5 女式跑鞋旨在將支撐性和柔軟性完美融合。Vongo 採用 Fresh Foam 中底和內側立柱，每一步都保持穩定性。\r\n', '中國', 1, '2021-08-14 16:11:20'),
 (5, 2, 10, 3, 'New Balance Fresh Foam X Vongo v5\r\n', 'nb01black', 4780, 4780, '我們的 Fresh Foam X Vongo v5 女式跑鞋旨在將支撐性和柔軟性完美融合。Vongo 採用 Fresh Foam 中底和內側立柱，每一步都保持穩定性。\r\n', '中國', 1, '2021-08-14 16:11:20'),
 (6, 2, 10, 3, 'New Balance Fresh Foam X Vongo v5\r\n', 'nb01red', 4780, 4780, '我們的 Fresh Foam X Vongo v5 女式跑鞋旨在將支撐性和柔軟性完美融合。Vongo 採用 Fresh Foam 中底和內側立柱，每一步都保持穩定性。\r\n', '中國', 1, '2021-08-14 16:11:20'),
-(12, 2, 10, 3, 'fakefake', 'noname01', 4780, 4780, '我們的 Fresh Foam X Vongo v5 女式跑鞋旨在將支撐性和柔軟性完美融合。Vongo 採用 Fresh Foam 中底和內側立柱，每一步都保持穩定性。\r\n', '中國', 1, '2021-08-14 16:11:20'),
-(13, 2, 10, 3, 'fakefake', 'noname02', 4780, 4780, '我們的 Fresh Foam X Vongo v5 女式跑鞋旨在將支撐性和柔軟性完美融合。Vongo 採用 Fresh Foam 中底和內側立柱，每一步都保持穩定性。\r\n', '中國', 1, '2021-08-14 16:11:20'),
-(33, 1, 6, 6, 'fakefake', 'noname11', 2330, 2330, 'fewqffegeqfo[qwk[fk[paskf[qw[', '台灣', 0, '2021-08-16 23:15:54'),
-(34, 1, 4, 4, 'fakefake', 'noname08', 2330, 2330, 'asfafadgggdsgdggegwgdasfas', '台灣', 1, '2021-08-17 09:09:01'),
-(35, 1, 5, 3, 'fakefake123', 'noname12', 2330, 2330, 'aasjfpoaejgpoeodmdopgspodgp', '台灣', 1, '2021-08-17 16:25:08'),
 (37, 1, 5, 3, 'fakefake123', 'noname12', 2330, 2330, 'asfasfsfaffsafsffas', '台灣', 1, '2021-08-17 16:27:10'),
 (38, 1, 5, 3, 'fakefake1', 'noname12', 2330, 2330, 'asfasfsfaffsafsffas', '台灣', 1, '2021-08-17 16:28:53'),
-(41, 1, 4, 2, 'imagetest1', 'imagetest1', 2330, 2330, 'fafeghrwhrewhge', '台灣', 1, '2021-08-17 16:33:55');
+(43, 2, 1, 2, 'fakefake123', 'noname12', 2330, 2330, 'qwfjqwpojfpowjgpjgpjgwp', '台灣', 1, '2021-08-19 13:13:33'),
+(48, 2, 11, 2, 'fakefake123', 'noname04', 2330, 2330, 'sdhsdh', '台灣', 1, '2021-08-19 15:07:06'),
+(50, 1, 6, 1, 'imagetest', 'noname04', 2330, 2330, 'dgsdsgsd', '台灣', 1, '2021-08-19 15:10:33');
 
 --
 -- 已傾印資料表的索引
@@ -81,7 +78,7 @@ ALTER TABLE `products`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `products`
 --
 ALTER TABLE `products`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- 已傾印資料表的限制式

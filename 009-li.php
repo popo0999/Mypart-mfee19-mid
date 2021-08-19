@@ -241,21 +241,12 @@ foreach($dict as $sid => $item){
                 </button>
               </td>
               <td><?= $r['sid'] ?></td>
-              <?php $tmp = '' ?>
               <td>
+              <?php $flag = 0 ?>
               <?php foreach($rowsImg as $ri): ?>
-                <?php if($tmp = ''): ?>
-                <?php if ( $r['sid'] == $ri['products_sid']): ?>
+                <?php if ( $r['sid'] == $ri['products_sid'] AND $flag == 0): ?>
                 <img src="./imgs/<?= htmlentities($ri['fileName'])?>" class="w-100" style="max-width: 100px;" alt="">
-                <?php endif; ?>
-                <?php $tmp = $ri['products_sid']  ?>
-                <?php  // echo json_encode($tmp); ?>
-                <?php else : ?>
-                  <?php if($tmp = $ri['products_sid']) : ?>
-                  <?php continue;?>
-                  <?php else: ?>
-                    <img src="./imgs/<?= htmlentities($ri['fileName'])?>" class="w-100" style="max-width: 100px;" alt="">
-                  <?php endif; ?>
+                <?php $flag = 1 ?>
                   <?php endif; ?>
                 <?php endforeach; ?>
              </td>

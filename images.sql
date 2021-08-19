@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2021-08-18 14:45:58
+-- 產生時間： 2021-08-19 15:48:48
 -- 伺服器版本： 10.4.20-MariaDB
 -- PHP 版本： 7.4.21
 
@@ -70,7 +70,9 @@ INSERT INTO `images` (`id`, `products_sid`, `fileName`) VALUES
 (30, 6, 'nb01red (5).jpg'),
 (31, 37, 'DSCN3935.JPG.jpg'),
 (32, 38, 'DSCN3935.JPG.jpg'),
-(35, 41, 'kk.jpg.jpg');
+(37, 43, 'DSCN3669.JPG.jpg'),
+(41, 48, 'pexels-andrea-piacquadio-3756165.jpg.jpg'),
+(42, 50, 'pexels-mnz-1598505.jpg.jpg');
 
 --
 -- 已傾印資料表的索引
@@ -91,7 +93,7 @@ ALTER TABLE `images`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- 已傾印資料表的限制式

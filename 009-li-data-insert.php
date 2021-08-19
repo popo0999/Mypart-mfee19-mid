@@ -186,14 +186,14 @@ $(function() {
                     lv: $('#categoriesMain option:selected').val()
                 },
                 datatype: "json",
-                success: function(result) {
+                success: function(resuslt) {
                     //當第一層回到預設值時，第二層回到預設位置
                     if (result == "") {
                         $('#categoriesChild').val($('option:first').val());
                     }
                     //依據第一層回傳的值去改變第二層的內容
                     while (i < result.length) {
-                        $("#categoriesChild").append("<option value='" + i + "'>" + result[i]['name'] + "</option>");
+                        $("#categoriesChild").append("<option value='" + result[i]['id']+ "'>" + result[i]['name'] + "</option>");
                         i++;
                     }
                 },
