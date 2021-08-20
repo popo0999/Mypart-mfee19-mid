@@ -75,9 +75,9 @@ $images = $pdo->query($sqlImg)->fetch();
                         <label for="categoriesChild">商品子分類</label>
                         <select class="form-control" id="categoriesChild" name="categoriesChild">
                         <option disabled selected>請選擇</option>
-                        <!-- <?php foreach($categoriesChild as $cc) : ?>
+                        <?php foreach($categoriesChild as $cc) : ?>
                         <option value="<?= $cc['id'] ?>" <?php if ($cc['id'] == $r['categories_parents_id']) {echo "selected";} ?>><?= $cc['name'] ?></option>
-                        <?php endforeach; ?> -->
+                        <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="form-group">

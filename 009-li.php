@@ -112,6 +112,25 @@ foreach($dict as $sid => $item){
 ?>
 
 <?php include __DIR__ . '/partials/html-head.php';?>
+<style>
+    .addData{
+       /* width: 300px; */
+       /* height: 100px; */
+       color: black;
+       border: 1px solid #ccc;
+       color: #ccc;
+       margin-bottom: 30px;
+       justify-content: center;
+    }
+
+    .addData a{
+        width: 100%;
+        height: 100%;
+        color: #333;
+        justify-content: center !important;
+        align-items: center;
+    }
+</style>
 <?php include __DIR__ . '/partials/navbar.php';?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
@@ -142,18 +161,18 @@ foreach($dict as $sid => $item){
   </div>
 </nav>
 <div class="container mt-3">
-  <div class="row" style="margin: 1rem 0">
+  <div class="row" >
       <div class="col">
           <form action="009-li.php" class="form-inline my-2 my-lg-0 d-flex justify-content-end">
               <input class="form-control mr-sm-2" type="search" name="keyword" placeholder="Search" aria-label="Search" value="<?=htmlentities($keyword)?> ">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              <button class="btn btn-outline-success " type="submit">Search</button>
           </form>
       </div>
   </div>
-  <div class="row">
-        <div class="col">
-            <a class="nav-link d-flex justify-content-end" href="009-li-data-insert.php">新增資料</a>
-        </div>
+  <div class="row  justify-content-end">
+      <div class="addData d-flex" style="margin: 15px 15px;">
+          <a class="nav-link d-flex" href="009-li-data-insert.php">＋新增商品</a>
+      </div>
   </div>
   <div class="row">
     <div class="col-6">
@@ -236,13 +255,13 @@ foreach($dict as $sid => $item){
               <td><?= ($r['launched']== 1) ? "上架": "已下架" ?></td>
               <td>
                 <a href="009-li-stock.php?sid=<?= $r['sid'] ?>">
-                <i class="fas fa-eye"></i>
+                <i class="fas fa-archive" style="font-size: 22px; color: #BF7449;"></i>
                 </a>
               </td>
               
               <td>
                 <a href="009-li-data-edit.php?sid=<?= $r['sid'] ?>">
-                  <i class="fas fa-edit"></i>
+                  <i class="fas fa-edit" style="font-size: 22px; color: #401D10;"></i>
                 </a>
               </td>
             </tr>

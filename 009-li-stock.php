@@ -50,6 +50,11 @@ $rows = $pdo->query($sql)->fetchAll();
                 <a class="nav-link d-flex justify-content-end" href="009-li-stock-insert.php?sid=<?= $sid ?>">＋新增鞋碼資料</a>
             </div>
         </div>
+        <div class="col-3">
+            <div class="addData d-flex" >
+                <a class="nav-link d-flex justify-content-end" href="009-li.php">返回商品頁</a>
+            </div>
+        </div>
   </div>
 
   <div class="row">
@@ -61,7 +66,6 @@ $rows = $pdo->query($sql)->fetchAll();
             <th scope="col">id</th>
             <th scope="col">商品圖片</th>
             <th scope="col">商品名稱</th>
-            <th scope="col">商品編號</th>
             <th scope="col">鞋碼</th>
             <th scope="col">庫存</th>
             <th scope="col">
@@ -84,13 +88,12 @@ $rows = $pdo->query($sql)->fetchAll();
               <?php $flag = 0 ?>
               <?php foreach($rowsImg as $ri): ?>
                 <?php if ( $r['sid'] == $ri['products_sid'] AND $flag == 0): ?>
-                <img src="./imgs/<?= htmlentities($ri['fileName'])?>" class="w-100" style="max-width: 100px;" alt="">
+                <img src="./imgs/<?= htmlentities($ri['fileName'])?>" class="w-100" style="max-width: 150px;" alt="">
                 <?php $flag = 1 ?>
                   <?php endif; ?>
                 <?php endforeach; ?>
              </td>
               <td><?= htmlentities($r['name']) ?></td>
-              <td><?= htmlentities($r['number']) ?></td>
               <td><?php if(empty($r['size'])){
                 echo '無資料';
               }else{
