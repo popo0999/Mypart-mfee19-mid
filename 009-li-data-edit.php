@@ -14,7 +14,7 @@ $brands = $pdo->query("SELECT * FROM `brands`")->fetchAll();
 
 $categoriesMain = $pdo->query("SELECT * FROM `categories` WHERE `parents_id` = 0")->fetchAll();
 
-$categoriesChild = $pdo->query("SELECT * FROM `categories` WHERE `parents_id` = 1")->fetchAll();
+$categoriesChild = $pdo->query("SELECT * FROM `categories`")->fetchAll();
 
 $sqlImg = "SELECT * FROM `images` WHERE `products_sid` = $sid";
 $images = $pdo->query($sqlImg)->fetch();
@@ -75,9 +75,9 @@ $images = $pdo->query($sqlImg)->fetch();
                         <label for="categoriesChild">商品子分類</label>
                         <select class="form-control" id="categoriesChild" name="categoriesChild">
                         <option disabled selected>請選擇</option>
-                        <?php foreach($categoriesChild as $cc) : ?>
+                        <!-- <?php foreach($categoriesChild as $cc) : ?>
                         <option value="<?= $cc['id'] ?>" <?php if ($cc['id'] == $r['categories_parents_id']) {echo "selected";} ?>><?= $cc['name'] ?></option>
-                        <?php endforeach; ?>
+                        <?php endforeach; ?> -->
                         </select>
                     </div>
                     <div class="form-group">
@@ -160,13 +160,13 @@ $(function() {
                 },
                 datatype: "json",
                 success: function(result) {
-                    //當第一層回到預設值時，第二層回到預設位置
+                    //當第一層回到預設值時，第二層要如何顯示之前的預設值呢?
                     if (result == "") {
-                        $('#categoriesChild').val($('option:first').val());
+                        $("#categoriesChild").append("<option value='" + result[i]['id'] + "'"  + ">" + result[i]['name'] + "</option>");
                     }
                     //依據第一層回傳的值去改變第二層的內容
                     while (i < result.length) {
-                        $("#categoriesChild").append("<option value='" + result[i]['id']+ "'>" + result[i]['name'] + "</option>");
+                        $("#categoriesChild").append("<option value='" + result[i]['id'] + "'"  + ">" + result[i]['name'] + "</option>");
                         i++;
                     }
                 },

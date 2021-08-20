@@ -45,7 +45,7 @@ if (!empty($cateP)) {
 
 
 // 總共有幾筆
-$totalRows = $pdo->query("SELECT count(1) FROM (`products` LEFT JOIN `stock` ON `sid` = `stock`.`products_id` ) $where")
+$totalRows = $pdo->query("SELECT count(1) FROM `products` $where")
   ->fetch(PDO::FETCH_NUM)[0];
 
 
@@ -72,7 +72,7 @@ if ($totalRows != 0) {
 // 原始: "SELECT * FROM products %s ORDER BY sid DESC LIMIT %s, %s",
 
   $sql = sprintf(
-    "SELECT * FROM (`products` LEFT JOIN `stock` ON `stock`.`products_id` = `sid`) %s ORDER BY `sid` DESC LIMIT %s, %s",
+    "SELECT * FROM `products`  %s ORDER BY `sid` DESC LIMIT %s, %s",
     $where,
     ($page - 1) * $perPage,
     $perPage
@@ -86,26 +86,7 @@ if ($totalRows != 0) {
 $sqlImg = "SELECT * FROM `images`";
 $rowsImg = $pdo->query($sqlImg)->fetchAll();
 
-// ------------------選單資料--------------
-// 拿到第一層的選單資料
-// $sqlCate = "SELECT * FROM `categories`";
-// $rowsCate = $pdo->query($sqlCate)->fetchAll();
 
-// $cate1 = [];
-// foreach( $rowsCate as $rCate){
-//   if($rCate == 0){
-//     $cate1[] = $rCate;
-//   }
-// }
-// foreach($cate1 as $k => $second){
-//   foreach($rowsCate as $rCate){
-//     if($rCate['parents_id'] == $second['id']){
-//       $cate1['$k']['nodes'][] = $rCate;
-//     }
-//   }
-// }
-
-// -----------------------------------------------------
 $sqlCate = "SELECT * FROM `categories`";
 $rowsCate = $pdo->query($sqlCate)->fetchAll();
 
@@ -222,9 +203,8 @@ foreach($dict as $sid => $item){
             <th scope="col">商品名稱</th>
             <th scope="col">商品編號</th>
             <th scope="col">價格</th>
-            <th scope="col">商品規格</th>
-            <th scope="col">商品數量</th>
             <th scope="col">上下架</th>
+            <th scope="col">庫存</th>
             <th scope="col">
               <!-- <i class="fas fa-edit"></i> -->
               編輯
@@ -253,20 +233,13 @@ foreach($dict as $sid => $item){
               <td><?= htmlentities($r['name']) ?></td>
               <td><?= htmlentities($r['number']) ?></td>
               <td><?= $r['price'] ?></td>
-              <td><?php if(empty($r['size'])){
-                echo '無資料';
-              }else{
-                echo $r['size'];
-              } ?>
-              </td>
-              <td>
-              <?php if(empty($r['stock'])){
-                echo '無資料';
-              }else{
-                echo $r['stock'];
-              } ?>
-              </td>
               <td><?= ($r['launched']== 1) ? "上架": "已下架" ?></td>
+              <td>
+                <a href="009-li-stock.php?sid=<?= $r['sid'] ?>">
+                <i class="fas fa-eye"></i>
+                </a>
+              </td>
+              
               <td>
                 <a href="009-li-data-edit.php?sid=<?= $r['sid'] ?>">
                   <i class="fas fa-edit"></i>
