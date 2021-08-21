@@ -115,16 +115,6 @@ $images = $pdo->query($sqlImg)->fetch();
                         </select> 
                         <!-- 忘記一個</select>浪費快一小時... -->
                     </div>
-                    <div class="form-group">
-                        <label for="size">鞋碼</label>
-                        <input type="text" class="form-control" id="size" name="size" value="<?= empty($rStock['size']) ? "無資料"  : htmlentities($rStock['size']) ; ?>">
-                        <small class="form-text"></small>
-                    </div>
-                    <div class="form-group">
-                        <label for="stock">庫存</label>
-                        <input type="text" class="form-control" id="stock" name="stock" value="<?= empty($rStock['stock']) ? "無資料"  : htmlentities($rStock['stock']) ; ?>">
-                        <small class="form-text"></small>
-                    </div> 
  
                     <button type="submit" class="btn btn-primary">修改</button>
                     </form>
