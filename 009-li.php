@@ -8,7 +8,7 @@ $activeLi = 'li';
 
 
 // 固定每一頁最多幾筆
-$perPage = 7;
+$perPage = 5;
 
 // query string parameters
 $qs = [];
@@ -196,7 +196,7 @@ foreach($dict as $sid => $item){
         <ul class="pagination d-flex justify-content-end">
 
           <li class="page-item <?= $page <= 1 ? 'disabled' : '' ?>">
-            <a class="page-link" href="?page=<?php $qs['page'] = $page - 1;
+            <a class="page-link" href="?<?php $qs['page'] = $page - 1;
                                               echo http_build_query($qs)  ?>">
               <i class="fas fa-arrow-circle-left"></i>
             </a>
@@ -213,7 +213,7 @@ foreach($dict as $sid => $item){
           endfor; ?>
 
           <li class="page-item <?= $page >= $totalPages ? 'disabled' : '' ?>">
-            <a class="page-link" href="?page=<?php $qs['page'] = $page + 1;
+            <a class="page-link" href="?<?php $qs['page'] = $page + 1;
                                               echo http_build_query($qs)  ?>">
               <i class="fas fa-arrow-circle-right"></i>
             </a>

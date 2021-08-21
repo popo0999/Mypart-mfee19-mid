@@ -132,6 +132,7 @@ $images = $pdo->query($sqlImg)->fetch();
     var output = document.getElementById('output');
     output.src = URL.createObjectURL(event.target.files[0]);
     output.onload = function() {
+        console.log('123');
       URL.revokeObjectURL(output.src) // free memory
     }
   };
