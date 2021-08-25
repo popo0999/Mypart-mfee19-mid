@@ -3,7 +3,7 @@
 
 <?php
 include __DIR__ . '/partials/init.php';
-$title = 'Hi Li!!';
+$title = '商品列表';
 $activeLi = 'li';
 
 
@@ -171,7 +171,7 @@ foreach($dict as $sid => $item){
   <div class="row" >
       <div class="col">
           <form action="009-li.php" class="form-inline my-2 my-lg-0 d-flex justify-content-end">
-              <input class="form-control mr-sm-2" type="search" name="keyword" placeholder="Search" aria-label="Search" value="<?=htmlentities($keyword)?> ">
+              <input class="form-control mr-sm-2" type="search" name="keyword" placeholder="Search" aria-label="Search" value="<?=htmlentities($keyword)?>">
               <button class="btn btn-outline-success " type="submit">Search</button>
           </form>
       </div>
